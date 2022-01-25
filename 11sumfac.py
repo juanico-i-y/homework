@@ -8,12 +8,12 @@
 # your code goes here
 
 n = 5
-runsum=0
-runmult=1
-for n in range (1,n+1):
-	runsum+=n
-	runmult*=n
-print(n,runsum,runmult)
+runsum = 0
+runmult = 1
+for i in range(1, n+1):
+	runsum += i
+	runmult *= i
+print(n, runsum, runmult)
 
 
 """
