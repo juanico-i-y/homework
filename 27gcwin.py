@@ -9,7 +9,7 @@
 # Describe the pros/cons of this algorith vs. nested loops
 
 seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
-#seq = 'ABCDEFGHIJKLMNOP'
+
 w = 11
 gcount = 0
 
@@ -22,12 +22,15 @@ for i in range(1,len(seq)):
 	if i+w > len(seq): break
 	if seq[i-1] == 'C': gcount += -1
 	if seq[i-1] == 'G': gcount += -1
-	#last one is pos56 but starts from 0, so 57 length. 
-	#so break when i and w is more than 56
+	
 	if seq[i+w-1] == 'C': gcount += 1
 	if seq[i+w-1] == 'G': gcount += 1
 	print(f'{i} {seq[i:i+w-1]} {(gcount/w):.4f}')
 
+#pro: It is faster for the computer to + or - one base at a time
+#nested loop re-calculates gc percent of every window: slow on big dataset
+
+#con: it is harder to program algorithm, not intuitive to read for me
 
 	
 """
