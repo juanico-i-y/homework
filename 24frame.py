@@ -5,13 +5,28 @@
 # Try coding this with nested loops
 
 dna = 'ATGGCCTTT'
+frame=0
 
-for i in range(0,len(dna))
-	print(i+1)
-	if (i+1) % 2 == 0: print(2)
-	elif (i+1) % 3 == 0: print(3)
-	else: print(3)
+for i in range(len(dna)):
+	print(i, end = ' ')
+	if frame == 0:
+		frame += 1 
+		print(0, end = ' ')
+	elif frame == 1:
+		frame += 1
+		print (1, end = ' ')
+	elif frame == 2:
+		frame += -2
+		print (2, end = ' ')
 	print(dna[i])
+
+
+for i in range(len(dna)):
+	print(i, end = ' ')
+	for b in range(2):
+		if (
+
+
 
 """
 python3 24frame.py
