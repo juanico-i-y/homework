@@ -5,26 +5,14 @@
 # Try coding this with nested loops
 
 dna = 'ATGGCCTTT'
-frame=0
 
 for i in range(len(dna)):
-	print(i, end = ' ')
-	if frame == 0:
-		frame += 1 
-		print(0, end = ' ')
-	elif frame == 1:
-		frame += 1
-		print (1, end = ' ')
-	elif frame == 2:
-		frame += -2
-		print (2, end = ' ')
-	print(dna[i])
+	print(i, i % 3, dna[i])
 
 
-for i in range(len(dna)):
-	print(i, end = ' ')
-	for b in range(2):
-		if (
+for i in range(0, len(dna), 3):
+	for j in range(3):
+		print(i + j, j, dna[i+j])
 
 
 
