@@ -8,7 +8,7 @@ revdna = dna[::-1]
 revcomp = ''
 
 for i in range(len(revdna)):
-	if revdna[i] == 'A': revcomp += 'T'
+	if   revdna[i] == 'A': revcomp += 'T'
 	elif revdna[i] == 'T': revcomp += 'A'
 	elif revdna[i] == 'G': revcomp += 'C'
 	else: revcomp += 'G'

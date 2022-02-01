@@ -6,12 +6,12 @@ random.seed(1) # comment-out this line to change sequence each time
 dna = ''
 
 for i in range(30):
-	if random.random()>0.6:
-		if random.random()>0.5:
+	if random.random() > 0.6:
+		if random.random() > 0.5:
 			dna+='G'
 		else: dna+='C'
 	else:
-		if random.random()>0.5:
+		if random.random() > 0.5:
 			dna+='A'
 		else: dna+='T'
 

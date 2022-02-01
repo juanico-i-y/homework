@@ -18,7 +18,7 @@ for b in range(w):
 	elif seq[b] == 'G': gcount += 1
 print(f'{0} {seq[0:w]} {gcount} {(gcount/w):.4f}')
 
-for i in range(1,len(seq)):
+for i in range(1, len(seq)):
 	if i+w > len(seq): break
 	if seq[i-1] == 'C': gcount += -1
 	if seq[i-1] == 'G': gcount += -1
@@ -30,7 +30,7 @@ for i in range(1,len(seq)):
 #pro: It is faster for the computer to + or - one base at a time
 #nested loop re-calculates gc percent of every window: slow on big dataset
 
-#con: it is harder to program algorithm, not intuitive to read for me
+#con: it is harder to program algorithm
 
 	
 """

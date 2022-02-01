@@ -8,22 +8,14 @@
 seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
 w = 11
 
-for i in range(len(seq)-w+1):
+for i in range(len(seq) - w + 1):
 	win = seq[i:i+w]
 	gcount = 0
-	for b in range(w):
-		if win[b] == 'C': gcount += 1
-		if win[b] == 'G': gcount += 1
+	for nt in range(win):
+		if win[nt] == 'C': gcount += 1
+		if win[nt] == 'G': gcount += 1
 	print(f'{i} {win} {(gcount/w):.4f}')
 	
-	
-#print(f'{i} {win} {(gcper[i]):.4f}')
-
-#if dna[i] == 'G': gc += 1
-#	if dna[i] == 'C': gc += 1
-
-#use codons stuff and gc percent stuff
-#moving window must be in a loop somehow
 
 
 

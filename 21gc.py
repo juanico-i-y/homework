@@ -7,9 +7,8 @@
 dna = 'ACAGAGCCAGCAGATATACAGCAGATACTAT' # feel free to change
 gc = 0
 
-for i in range(len(dna)):
-	if dna[i] == 'G': gc += 1
-	if dna[i] == 'C': gc += 1
+for nt in range(len(dna)):
+	if dna[nt] == 'G' or dna[nt] == 'C': gc += 1
 
 print('%.2f' % (gc/len(dna))) #printf style
 print('{:.2f}'.format(gc/len(dna))) #str.format method
