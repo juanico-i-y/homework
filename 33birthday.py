@@ -15,6 +15,20 @@
 
 import random
 
+shared_birthdays = 0
+calendar = [0]*365
+people = 25
+numtrials = 50
+
+for trial in range(numtrials):
+	for i in range(people):
+		calendar[random.randint(0,364)] += 1
+	for day in range(len(calendar)):
+		if calendar[day] > 1:
+			shared_birthdays += 1
+			break
+
+print(shared_birthdays/numtrials)
 
 
 """

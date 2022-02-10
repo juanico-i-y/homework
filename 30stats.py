@@ -7,11 +7,8 @@
 import sys
 import math
 
-sys.argv.pop(0)
-nlist = sys.argv
-
-for x in range(len(nlist)):
-	nlist[x] = int(nlist[x])
+nlist = []
+for i in range (1, len(sys.argv)): nlist.append(int(sys.argv[i]))
 nlist.sort()
 
 count = 0
@@ -21,8 +18,6 @@ xmew = 0
 for num in nlist:
 	count += 1
 	total += num
-
-mean = total/len(nlist)
 
 #std dev calculation
 totdiff = 0
@@ -48,8 +43,8 @@ else: #odd number of numbers
 print('Count:', count)
 print('Minimum:', nlist[0])
 print('Maximum:', nlist[len(nlist)-1])
-print('Mean:', mean)
-print('Std. dev', std)
+print('Mean:', total/len(nlist))
+print('Std. dev:', std)
 print('Median:', median)
 
 """
