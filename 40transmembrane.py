@@ -21,61 +21,59 @@ import sys
 #python3 40transmembrane.py ../MCB185-2022/Data/at_prots.fa
 
 def kdcalc(aas):
-	kd = 0
+	kdtot = 0
 	for aa in aas:
-		if aa == 'W': kd += -0.9
-		if aa == 'C': kd += 2.5
-		if aa == 'H': kd += -3.2
-		if aa == 'M': kd += 1.9
-		if aa == 'Y': kd += -1.3
-		if aa == 'Q': kd += -3.5
-		if aa == 'F': kd += 2.8
-		if aa == 'N': kd += -3.5
-		if aa == 'P': kd += -1.6
-		if aa == 'T': kd += -0.7
-		if aa == 'R': kd += -4.5
-		if aa == 'I': kd += 4.5
-		if aa == 'D': kd += -3.5
-		if aa == 'G': kd += -0.4
-		if aa == 'A': kd += 1.8
-		if aa == 'K': kd += -3.9
-		if aa == 'E': kd += -3.5
-		if aa == 'V': kd += 4.2
-		if aa == 'L': kd += 3.8
-		if aa == 'S': kd += -0.8
+		if aa == 'W': kdtot += -0.9
+		if aa == 'C': kdtot += 2.5
+		if aa == 'H': kdtot += -3.2
+		if aa == 'M': kdtot += 1.9
+		if aa == 'Y': kdtot += -1.3
+		if aa == 'Q': kdtot += -3.5
+		if aa == 'F': kdtot += 2.8
+		if aa == 'N': kdtot += -3.5
+		if aa == 'P': kdtot += -1.6
+		if aa == 'T': kdtot += -0.7
+		if aa == 'R': kdtot += -4.5
+		if aa == 'I': kdtot += 4.5
+		if aa == 'D': kdtot += -3.5
+		if aa == 'G': kdtot += -0.4
+		if aa == 'A': kdtot += 1.8
+		if aa == 'K': kdtot += -3.9
+		if aa == 'E': kdtot += -3.5
+		if aa == 'V': kdtot += 4.2
+		if aa == 'L': kdtot += 3.8
+		if aa == 'S': kdtot += -0.8
+	kd = kdtot / len(aas)
 	return kd
 
 def fattyhelix(pep, win, threshold):
 	for i in range(0, len(pep) - win):
 		seq = pep[i:i+win]
-		if kdcalc(seq) > threshold and 'P' not in seq: return True
+		if kdcalc(seq) > threshold and 'P' not in seq: 
+			return True
 	return False
 
-
-namerecords = []
-seqrecords = []
-seq = ''
-with open(sys.argv[1]) as fp:
-	for line in fp.readlines():
-		if line[0] == '>':
-			words = line.split() #splits by word
-			seqname = words[0][1:]
-		else:
-			seq += line.rstrip()
-			if '*' in seq:
-				namerecords.append(seqname)
-				seqrecords.append(seq[:-1])
-				seq = ''
-
-for i in range(len(namerecords)):
-	name = namerecords[i]
-	prot = seqrecords[i]
-	if fattyhelix(prot[0:30], 8, 2.5) and fattyhelix(prot[30:], 11, 2.0) == True:
+#generate a list with a tuples that contains name and sequence
+#for a nt sequence, flush on a line with a greater than sign
+def readfasta(filename):
+	seq = ''
+	with open(filename) as fp:
+		for line in fp.readlines():
+			if line[0] == '>':
+				words = line.split() #splits by word
+				seqname = words[0][1:]
+			else:
+				seq += line.rstrip()
+				if '*' in seq:
+					yield((seqname, seq[:-1])) #stops after line until next iteration is needed
+					seq = ''
+	
+for name, prot in readfasta(sys.argv[1]):
+	if fattyhelix(prot[0:30], 8, 2.5) == True and fattyhelix(prot[30:], 11, 2.0) == True:
 		print(name)
-	else: pass
+
 
 """
-
 records = []
 with open(sys.argv[1]) as fp:
 	seq = ''
