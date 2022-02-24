@@ -66,6 +66,7 @@ def readfasta(filename):
 				seq = ''
 			else:
 				seq += line.rstrip()
+	yield((seqname, seq[:-1]))
 	
 for name, prot in readfasta(sys.argv[1]):
 	if fattyhelix(prot[0:30], 8, 2.5) == True and fattyhelix(prot[30:], 11, 2.0) == True:
