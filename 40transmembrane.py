@@ -60,13 +60,12 @@ def readfasta(filename):
 	with open(filename) as fp:
 		for line in fp.readlines():
 			if line[0] == '>':
+				if seq != '': yield((seqname, seq[:-1]))
 				words = line.split() #splits by word
 				seqname = words[0][1:]
+				seq = ''
 			else:
 				seq += line.rstrip()
-				if '*' in seq:
-					yield((seqname, seq[:-1])) #stops after line until next iteration is needed
-					seq = ''
 	
 for name, prot in readfasta(sys.argv[1]):
 	if fattyhelix(prot[0:30], 8, 2.5) == True and fattyhelix(prot[30:], 11, 2.0) == True:
