@@ -51,9 +51,10 @@ def entropy_calc(seq):
 			entropy += (-fraction*math.log2(fraction))
 	return entropy
 
+#N-based masking
 def n_entropy_seq_rewriter(seq, threshold, w):
 	rewrite_list=[]
-	rewrite_list[:0]=seq
+	rewrite_list[:0] = seq
 
 	for i in range(0, len(seq) - w+1):
 		window = seq[i:i+w]
@@ -63,9 +64,10 @@ def n_entropy_seq_rewriter(seq, threshold, w):
 	rewrite = "".join(rewrite_list)
 	return rewrite
 
+#lowercase masking
 def l_entropy_seq_rewriter(seq, threshold, w):
 	rewrite_list=[]
-	rewrite_list[:0]=seq
+	rewrite_list[:0] = seq
 	
 	for i in range(0, len(seq) - w+1):
 		window = seq[i:i+w]
